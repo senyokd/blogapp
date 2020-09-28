@@ -34,7 +34,7 @@
 
 <%= render 'layouts/header' %>
 
-<div class="container-fluid bg-3 text-center">
+<div class="container-fluid bg-3 text-left">
 
 
 
@@ -55,6 +55,20 @@
 
 
 <%= render 'layouts/footer' %>
+
+<script>
+  $(".nav>li").each(function() {
+
+    var navItem = $(this);
+
+    if (navItem.find("a").attr("href") == location.pathname) {
+
+      navItem.addClass("active");
+
+    }
+
+});
+</script>
 
 </body>
 </html>
