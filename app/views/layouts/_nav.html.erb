@@ -1,20 +1,30 @@
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="<%= root_path %>">Senyo Blog</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="<%= root_path %>">Home</a></li>
-        <li><a href="<%= new_article_path %>">Add Article</a></li>
-        <li class=" dropdown">
-        <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Categories <span class="caret"></span>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="  text-align: center;
+position: fixed !important;
+top: 0;
+left: 0;
+right: 0;
+box-shadow: 0px 0px 8px 0px;
+-webkit-box-shadow: 0px 0px 8px 0px;
+-moz-box-shadow: 0px 0px 8px 0px;
+background-color: gray;
+width: 100%;
+z-index: 100;">
+  <a class="navbar-brand text-bold" href="<%= root_path %>">Senyo Blog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="<%= root_path %>">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="<%= new_article_path %>">Add Article</a>
+      </li>
+      <li class=" dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+          Categories
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% Category.all.each do |category|%>
@@ -23,9 +33,11 @@
           <% end %>
         </ul>
       </li>
-        <li><a href="<%= new_subscriber_path %>">Subscribe</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item active">
+        <a class="nav-link" href="<%= new_subscriber_path %>">Subscribe</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
     <li><a href="#">Logged in as <strong><%= current_user.email %></a></strong></li>
     <li> <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> </li>
@@ -35,6 +47,5 @@
     <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link glyphicon glyphicon-log-in'%> </li>
   <% end %>
       </ul>
-    </div>
   </div>
 </nav>

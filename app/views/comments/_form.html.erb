@@ -1,17 +1,18 @@
 <%= form_with(model: comment, local: true) do |form| %>
 
 
-  <div class="field">
+  <div class="field p-5 bg-light form-group">
     <%= form.label :comment %>
-    <%= form.text_area :content, class:"form-control" %>
-  </div>
+    <%= form.text_area :content, class:"form-control row-10 col-30" %>
+ 
   <br>
 
   <%= hidden_field_tag 'comment[article_id]', current_user.id %>
 
 
-<br>
-  <div class="actions">
-    <%= form.submit class:"btn btn-primary btn-lg" %>
+  <div class="actions form-group">
+    <%= form.submit :class=>"btn btn-primary"%>
+  </div>
+  <br>
   </div>
 <% end %>

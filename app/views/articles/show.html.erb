@@ -1,5 +1,8 @@
-<p id="notice"><%= notice %></p>
-
+<!--<p id="notice"><%= notice %></p>
+<div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12">
 <h2>
   <%= @article.title %>
 </h2>
@@ -26,3 +29,57 @@
 <% if user_signed_in? %>
 <%= link_to 'Add Comment', new_comment_path %>
 <% end %>
+</div>
+</div>
+</div>
+</div>-->
+
+
+
+  <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12">
+          <div class=" single-page">
+          <div class="container">
+            <div class="row same-height justify-content-center">
+              <div class="col-md-12 col-lg-10">
+                <div class="post-entry text-center">
+                  <span class="post-category text-white bg-success mb-3"><%= @article.category.name %></span>
+                  <h1 class="mb-4"><a><%= @article.title %></a></h1>
+                  <%= image_tag @article.image , style:"width:60%" %>
+                  <div class="post-meta align-items-center text-center">
+                    <figure class="author-figure mb-0 mr-3 d-inline-block"></figure>
+                    <span class="d-inline-block mt-1">By <%= @article.user.email %>
+                  </div>
+                  <br>
+                  <div class="bg-light">
+                  <br>
+                  <p><%= @article.description %></p>
+                  <br>
+                  </div>
+                  <div class="col-3 comment-list">
+                  <br>
+                  <%= render 'comments/list',comment: @comment %>
+                    <% if user_signed_in? %>
+                    <%= link_to 'Add Comment', new_comment_path %>
+                    <% end %>
+
+                    </div>
+                  
+
+                    <br>
+                    <% if @article.user == current_user %>
+                      <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-primary" %> |
+                    <% end %>
+                    <%= link_to 'Back', articles_path %>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+  </div>

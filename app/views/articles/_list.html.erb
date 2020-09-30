@@ -1,4 +1,4 @@
-<h4><small>RECENT POSTS</small></h4>
+<!--<h4><small>POSTS</small></h4>
 <br>
 
 <div class="container-fluid text-left">
@@ -29,4 +29,48 @@
     <div class="col-sm-3 sidenav">
     </div>
   </div>
-</div>
+</div>-->
+
+<div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12">
+            <h2>Recent Posts</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="entry2">
+            <% particles.each do |article| %>
+              <br>
+              <div class="col-md-3"
+              <a href="<%= article_path(article.id) %>">
+        <%= image_tag article.image, style:"float:right;width:100%" %>
+        </a>
+        </div>
+              <div class="excerpt">
+              <span class="post-category text-white bg-success mb-3"><%= article.category.name %></span>
+
+              <h2><a href="<%= article_path(article.id) %>"><h4><%= article.title %> </h4></a></h2>
+              <div class="post-meta align-items-center text-left clearfix">
+                <span class="d-inline-block mt-1">By <a ><%= article.user.email %></a></span>
+                <span>&nbsp;-&nbsp; <%= article.created_at %></span>
+              </div>
+              
+                <p><%= article.description %></p>
+                
+          <br>
+                <% if article.user == current_user %>
+          <%= link_to 'Edit', edit_article_path(article), class: "btn btn-primary" %>
+          <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-danger"  %> 
+          <%end%>
+          <br>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        
+          
